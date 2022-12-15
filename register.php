@@ -1,6 +1,12 @@
 <?php
 session_start();
 require_once('./db/config.php');
+
+
+// back to hoem if user already logged in
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    header('location: /project');
+}
 ?>
 
 
@@ -79,7 +85,7 @@ require_once('./db/config.php');
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form action="" method="POST" class="mx-1 mx-md-4">
+                                    <form action="/project/controller/handle-register.php" method="POST" class="mx-1 mx-md-4">
 
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -146,7 +152,7 @@ require_once('./db/config.php');
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="tel" name="phone" class="form-control" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required />
-                                                <label class="form-label" for="form3Example3c">Phone</label>
+                                                <label class="form-label" for="phone">Phone</label>
                                             </div>
                                         </div>
 
@@ -154,7 +160,7 @@ require_once('./db/config.php');
                                             <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" name="password" id="pass" class="form-control" required minlength="5" />
-                                                <label class="form-label" for="form3Example4c">Password</label>
+                                                <label class="form-label" for="password">Password</label>
                                             </div>
                                         </div>
 
@@ -162,7 +168,7 @@ require_once('./db/config.php');
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" name="confirm-password" id="c_pass" class="form-control" required />
-                                                <label class="form-label" for="form3Example4c">Confirm Password</label>
+                                                <label class="form-label" for="confirm-password">Confirm Password</label>
                                             </div>
                                         </div>
 
