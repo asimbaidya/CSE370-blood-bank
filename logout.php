@@ -15,3 +15,5 @@ session_destroy();
 session_destroy();
 
 header('location: /project/');
+
+// DONE
