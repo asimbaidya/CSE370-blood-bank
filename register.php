@@ -14,8 +14,11 @@ require_once('./db/config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonmous">
     <!-- Javascript for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- Font Awosome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- custom css -->
-    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/project/static/styles/style.css">
     <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
@@ -78,34 +81,46 @@ require_once('./db/config.php');
 
                                     <form action="" method="POST" class="mx-1 mx-md-4">
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="fname" class="form-control" />
-                                                <label class="form-label" for="form3Example1c">First Name</label>
+                                                <input type="text" name="fname" class="form-control" placeholder="First Name" required />
+                                                <label class="form-label" for="fname">First Name</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="lname" class="form-control" />
-                                                <label class="form-label" for="form3Example1c">Last Name</label>
+                                                <input type="text" name="lname" class="form-control" placeholder="Last Name" required />
+                                                <label class="form-label" for="lname">Last Name</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <i class="fas fa-venus-mars fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="date" name="dob" class="form-control" />
-                                                <label class="form-label" for="form3Example3c">Date of Birth</label>
+                                                <select class="form-select" name="sex" required>
+                                                    <option value="other">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Others</option>
+                                                </select>
+                                                <label class="form-label" for="sex">Select Blood Group</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <i class="fas fa-calendar-days fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <select class="form-select" name='blood-group' aria-label="Default select example" value="what">
+                                                <input type="date" name="dob" class="form-control" value="1999-06-09" />
+                                                <label class="form-label" for="dob">Date of Birth</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <i class="fas fa-heart fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <select class="form-select" name='blood-group' aria-label="Default select example" required>
                                                     <option value="A+">A positive </option>
                                                     <option value="A-">A negative </option>
                                                     <option value="B+">B positive</option>
@@ -115,38 +130,38 @@ require_once('./db/config.php');
                                                     <option value="AB+">AB positive </option>
                                                     <option value="AB-">AB negative</option>
                                                 </select>
-                                                <label class="form-label" for="form3Example3c">Select Blood Group</label>
+                                                <label class="form-label" for="blood-group">Select Blood Group</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" name="email" class="form-control" />
-                                                <label class="form-label" for="form3Example3c">Your Email</label>
+                                                <input type="email" name="email" class="form-control" placeholder="example@email.com" required />
+                                                <label class="form-label" for="email">Your Email</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" name="phone" class="form-control" />
+                                                <input type="tel" name="phone" class="form-control" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required />
                                                 <label class="form-label" for="form3Example3c">Phone</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div class="d-flex flex-row align-items-center mb-2">
+                                            <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="password" class="form-control" />
+                                                <input type="password" name="password" id="pass" class="form-control" required minlength="5" />
                                                 <label class="form-label" for="form3Example4c">Password</label>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="confirm-password" class="form-control" />
+                                                <input type="password" name="confirm-password" id="c_pass" class="form-control" required />
                                                 <label class="form-label" for="form3Example4c">Confirm Password</label>
                                             </div>
                                         </div>
@@ -168,6 +183,22 @@ require_once('./db/config.php');
             </div>
         </div>
     </section>
+
+    <script>
+        var password = document.getElementById("pass"),
+            confirm_password = document.getElementById("c_pass");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity("");
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 
 </body>
 

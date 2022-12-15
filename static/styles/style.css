@@ -23,3 +23,8 @@
   font-size: 1.2em;
   padding-left: 2em;
 }
+
+
+input:focus::placeholder {
+  color: transparent;
+}
