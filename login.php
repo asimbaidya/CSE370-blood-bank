@@ -87,7 +87,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/register.php">Join Today </a></li>';
                     }
                     // php code
                     ?>
@@ -158,7 +158,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                         <i class="fas fa-hand fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                             Does not have a account ?
-                            <a href="/project/register.php" class="link-primary">Jon Today</a>
+                            <a href="/project/register.php" class="link-primary">Join Today</a>
                         </div>
                     </div>
                 </div>
