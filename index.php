@@ -75,7 +75,7 @@ require_once('./db/config.php');
         print_r($_SESSION);
         echo "</pre>\n<hr>";
         ?>
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div id="carousel_slides" class="carousel carousel-fade carousel-dark slide " data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -161,6 +161,16 @@ require_once('./db/config.php');
             </button>
         </div>
     </div>
+    <script>
+        const myCarouselElement = document.querySelector('#carousel_slides')
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+            interval: 1000,
+            wrap: true,
+            keyboard: true,
+            ride: true,
+            touch: true,
+        })
+    </script>
 </body>
 
 </html>

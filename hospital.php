@@ -65,6 +65,12 @@ require_once('./db/config.php');
             </div>
         </div>
     </nav>
+    <!--  -->
+    <?php
+    if (!isset($_SESSION["admin_loggedin"]) or $_SESSION["admin_loggedin"] != true) {
+        echo "<h1> ⚠️ Only Admin can visit this page</h1>";
+    }
+    ?>
     <!-- what now -->
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
@@ -115,6 +121,11 @@ require_once('./db/config.php');
             </div>
         </div>
     </section>
+
+
+
+    <!--  -->
+
 </body>
 
 </html>

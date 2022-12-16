@@ -65,6 +65,23 @@ require_once('./db/config.php');
             </div>
         </div>
     </nav>
+    <!--  -->
+    <!--  -->
+    <h1>Add Hospitall Contact</h1>
+    <form class="mt-4" action="" method="POST">
+        <!--  -->
+        <div class="mb-3">
+            <label for="" class="">Blood Group</label>
+            <input type="email" class="form-control" id="">
+        </div>
+        <!--  -->
+        <div class="mb-3">
+            <label for="" class="">Date</label>
+            <input type="date" class="form-control" id="">
+        </div>
+        <!--  -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 </body>
 

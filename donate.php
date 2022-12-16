@@ -86,7 +86,7 @@ require_once('./db/config.php');
             <!--  -->
             <div class="mb-3">
                 <label for="" class="">Blood Group</label>
-                <input type="email" class="form-control" id="">
+                <input type="email" name="abc" class="form-control" id="">
             </div>
             <!--  -->
             <div class="mb-3">
