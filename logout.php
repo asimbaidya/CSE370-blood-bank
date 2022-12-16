@@ -13,6 +13,11 @@ if (isset($_SESSION)) {
 $_SESSION = array();
 session_destroy();
 
-header('location: /project/');
-
+// redirect to previous page
+if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+    $BACK = $_SERVER['HTTP_REFERER'];
+    header("location: $BACK");
+} else {
+    header('location: /project/');
+}
 // DONE

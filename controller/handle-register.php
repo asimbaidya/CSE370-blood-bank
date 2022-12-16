@@ -9,15 +9,28 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
-    header("location: /project");
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project');
+    }
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
-    header("location: /project");
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project/');
+    }
     exit;
 }
+
 
 // testing 
 // echo "<hr>\n<h1>POST</h1>";

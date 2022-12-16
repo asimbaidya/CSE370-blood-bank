@@ -66,12 +66,36 @@ require_once('./db/config.php');
     </nav>
 
 
-    <!------------------------------Button for adding post-------------  -->
+    <!------------------------------adding new post for adding post-------------  -->
     <div class="container mt-2">
-        <div class="mx-auto">
-            <button type="button" class="btn btn-primary">Make A Request for Blood</button>
-        </div>
-
+        <form>
+            <div class="form-outline flex-fill m-2">
+                <label for="blood_group">Required Blood Group</label>
+                <select class="form-select" name='blood-group' aria-label="Default select example" required>
+                    <option value="A+">A positive </option>
+                    <option value="A-">A negative </option>
+                    <option value="B+">B positive</option>
+                    <option value="B-">B negative</option>
+                    <option value="O+">O positive</option>
+                    <option value="O-">O negative</option>
+                    <option value="AB+">AB positive </option>
+                    <option value="AB-">AB negative</option>
+                </select>
+            </div>
+            <div class="form-outline flex-fill m-2">
+                <label for="">Search Details</label>
+                <textarea class="form-control" name="post-content" rows="2" placeholder="Write Your Post here ... "></textarea>
+            </div>
+            <div class="d-grid gap-2 flex-fill m-2">
+                <?php
+                if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
+                    echo '<button type="submit" class="btn btn-primary">Post</button>';
+                } else {
+                    echo '<button type="button" id="need-login" class="btn btn-outline-secondary">Post</button>';
+                }
+                ?>
+            </div>
+        </form>
 
         <!------------------------------Display from db--------------------  -->
         <?php
@@ -87,6 +111,9 @@ require_once('./db/config.php');
                     $resolve_time = $row['resolve_time'];
                     $request_by = $row['request_by'];
                     $resolved_by = $row['resolved_by'];
+                    //  formatted values
+                    $date = strtotime($request_time);
+                    $f_req_time = date('H:i A, l d , F, Y', $date);
 
                     // <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div>
                     echo '<div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
@@ -104,8 +131,8 @@ require_once('./db/config.php');
                                         <p class="card-text">
                                         ' . $content . '
                                         </p>
-                                        <p class="card-text"><small class="text-muted">Requested at ' . $request_time . '</small></p>
-                                        <button type="button" class="btn btn-primary">Give Blood Resolve</button>
+                                        <p class="card-text"><small class="text-muted">Requested at ' . $f_req_time . '</small></p>
+                                        <button type="button" class="btn btn-primary">Contact for Donate</button>
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +163,14 @@ require_once('./db/config.php');
             </div>
         </div>
     </div>
+    <script>
+        "use strict";
+        const element = document.getElementById('need-login');
+        console.log(element)
+        element.addEventListener('click', () => {
+            alert('You must login before posting a search request');
+        })
+    </script>
 
 
 </body>

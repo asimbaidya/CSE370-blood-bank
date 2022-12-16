@@ -2,11 +2,31 @@
 // initialize the session
 session_start();
 
-// Check if the user is already logged in, if yes then redirect him to welcome page
+// exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
-    header("location: /project");
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project');
+    }
     exit;
 }
+
+// exit if admin logged in
+if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project/');
+    }
+    exit;
+}
+
+
 ?>
 
 
@@ -76,6 +96,11 @@ if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
         </div>
     </nav>
 
+    <pre>
+        <?php
+        // print_r($_SERVER);
+        ?>
+    </pre>
     <!----------------------------- form ------------------------------  -->
 
     <section class="vh-100">

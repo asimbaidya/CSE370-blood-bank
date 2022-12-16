@@ -3,9 +3,28 @@ session_start();
 require_once('./db/config.php');
 
 
-// back to hoem if user already logged in
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    header('location: /project');
+// exit if user logged in
+if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project');
+    }
+    exit;
+}
+
+// exit if admin logged in
+if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project/');
+    }
+    exit;
 }
 ?>
 
