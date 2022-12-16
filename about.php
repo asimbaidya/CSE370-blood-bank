@@ -64,6 +64,31 @@ require_once('./db/config.php');
         </div>
     </nav>
 
+    <!-- Abouts  -->
+
+    <div class="container">
+        <div class="container">
+            <details class="faq">
+                <summary class="faq-question">WTF is the purpose of this site!!</summary>
+                <span class="faq-ans">
+                    To pass a shittty course
+                </span>
+            </details>
+            <details class="faq">
+                <summary class="faq-question">ER url!</summary>
+                <span class="faq-ans">
+                    <a href="/">TODO</a>
+                </span>
+            </details>
+            <details class="faq">
+                <summary class="faq-question">Schema url!</summary>
+                <span class="faq-ans">
+                    <a href="/">TODO</a>
+                </span>
+            </details>
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -58,10 +58,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
-                    if ($_SESSION['user_logged']) {
+                    if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/user.php">Profile</a></li>';
-                    } elseif ($_SESSION['admin_logged']) {
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                    } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
                     } else {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
                     }
@@ -85,12 +87,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
+                                    <?php
+                                    if (isset($_SESSION['register_err']) && !empty($_SESSION['register_err'])) {
+                                        echo '<div class="alert alert-danger">' . $_SESSION['register_err'] . '</div>';
+                                        unset($_SESSION['register_err']);
+                                    } else {
+                                    }
+                                    ?>
+
                                     <form action="/project/controller/handle-register.php" method="POST" class="mx-1 mx-md-4">
 
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="fname" class="form-control" placeholder="First Name" required />
+                                                <input type="text" name="fname" class="form-control" placeholder="First Name" required value="asim" />
                                                 <label class="form-label" for="fname">First Name</label>
                                             </div>
                                         </div>
@@ -98,7 +108,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="lname" class="form-control" placeholder="Last Name" required />
+                                                <input type="text" name="lname" class="form-control" placeholder="Last Name" required value="baidya" />
                                                 <label class="form-label" for="lname">Last Name</label>
                                             </div>
                                         </div>
@@ -143,7 +153,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" name="email" class="form-control" placeholder="example@email.com" required />
+                                                <input type="email" name="email" class="form-control" placeholder="example@email.com" required value="userxx@gmailo.com" />
                                                 <label class="form-label" for="email">Your Email</label>
                                             </div>
                                         </div>
@@ -151,7 +161,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="tel" name="phone" class="form-control" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required />
+                                                <input type="tel" name="phone" class="form-control" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required value="00000000000" />
                                                 <label class="form-label" for="phone">Phone</label>
                                             </div>
                                         </div>
@@ -159,7 +169,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="password" id="pass" class="form-control" required minlength="5" />
+                                                <input type="password" name="password" id="pass" class="form-control" required minlength="5" value="12345" />
                                                 <label class="form-label" for="password">Password</label>
                                             </div>
                                         </div>
@@ -167,7 +177,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="confirm-password" id="c_pass" class="form-control" required />
+                                                <input type="password" name="confirm-password" id="c_pass" class="form-control" required value="12345" />
                                                 <label class="form-label" for="confirm-password">Confirm Password</label>
                                             </div>
                                         </div>

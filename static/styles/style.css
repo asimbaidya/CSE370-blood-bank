@@ -14,7 +14,10 @@
 .faq {
   margin: 0.2em;
   padding: 1em;
-  border: solid green 1px;
+  color: #d20f39;
+  background-color: #f5e0dc		;
+  border: solid #e64553 1px;
+  /* border: solid #a6d189	 1px; */
 }
 .faq-question {
   font-size: 24px;
@@ -23,7 +26,6 @@
   font-size: 1.2em;
   padding-left: 2em;
 }
-
 
 input:focus::placeholder {
   color: transparent;

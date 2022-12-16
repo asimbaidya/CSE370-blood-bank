@@ -4,7 +4,7 @@ session_start();
 include_once('../db/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header('location: /project');
+    header('location: /project/login.php');
 }
 
 // exit if user logged in
@@ -40,7 +40,7 @@ if (isset($_POST['admin'])) {
             $pass = $row[1];
             if ($pass == $password) {
                 $_SESSION["admin_loggedin"] = true;
-                $_SESSION["admin_loggedin"] = $useremail;
+                $_SESSION["useremail"] = $useremail;
                 header('location:  /project');
             } else {
                 $_SESSION['login_err'] = "️Admin Password Does NOT MATCH!";
