@@ -31,33 +31,33 @@ require_once('./db/config.php');
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2" aria-current="page" href="/project/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2" href="/project/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2" href="/project/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/login.php">Login</a></li>';
                     }
                     // php code
                     ?>

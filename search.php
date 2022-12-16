@@ -31,33 +31,33 @@ require_once('./db/config.php');
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2" aria-current="page" href="/project/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2" href="/project/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2" href="/project/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/login.php">Login</a></li>';
                     }
                     // php code
                     ?>
@@ -100,12 +100,12 @@ require_once('./db/config.php');
 
         <!------------------------------Display from db--------------------  -->
         <?php
-        $sql = "SELECT * FROM search;";
+        $sql = "SELECT * FROM search ORDER BY request_time DESC;";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
                     $sid = $row['id'];
-                    $content = $row['content'];
+                    $content = nl2br($row['content']);
                     $blood_group = bin2hex($row['blood_group']);
                     $search_status = $row['search_status'];
                     $request_time = $row['request_time'];
@@ -115,9 +115,25 @@ require_once('./db/config.php');
                     //  formatted values
                     $date = strtotime($request_time);
                     $f_req_time = date('H:i A, l d , F, Y', $date);
+                    $bg = $row['blood_group'];
 
                     // logged user info
                     $useremail = $_SESSION['useremail'];
+                    // handling issues
+                    $solve_button = '';
+                    if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
+                        $solve_button =  <<<bnt
+                        <button type="submit" class="btn btn-primary" onclick="window.location.href='/project/controller/handle-resolve.php?search-id=$sid&sblood-group=$blood_group&request-id=$request_by&resolver-id=$useremail';">
+                            Contact for Donate
+                        </button>
+                        bnt;
+                    } else {
+                        $solve_button =  <<<bnt
+                        <button type="button" class="btn btn-outline-secondary" id="need-login-resolve" onclick="window.location.href='/project/login.php';">
+                            Login & Contact for Donate
+                        </button>
+                        bnt;
+                    }
 
                     // <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div>
                     echo <<<EOF
@@ -128,14 +144,10 @@ require_once('./db/config.php');
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h3 class="card-title"> Emmergency <span class="badge bg-danger"> $blood_group </span> required! by $request_by </h3>
+                                         <h3 class="card-title"> Emmergency <span class="badge bg-danger"> $bg </span> required! by $request_by </h3>
                                         <p class="card-text"> $content </p>
                                         <p class="card-text"><small class="text-muted">Requested at  $f_req_time </small></p>
-                                        <a class="primary"
-                                        href="/project/controller/handle-resolve.php?search-id=$sid&sblood-group=$blood_group&request-id=$request_by&resolver-id=$useremail"
-                                        >
-                                        <span class="badge bg-primary">Contact for Donate</span>
-                                        </a>
+                                        $solve_button
                                     </div>
                                 </div>
                             </div>
@@ -144,29 +156,11 @@ EOF;
                 }
             }
         }
-
+        //  end of sql
         ?>
-        <div class="card m-1">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="/project/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h3 class="card-title">Need A+ blood for DeadPool</h3>
-                        <p class="card-text">
-                            A relative of a geo faculty required A+ve Blood<br>
-                            Location:Kacukhet Dhaka Cantonment<br>
-                            Contact Number:01739935333<br>
-                            His Condition is little bit critical if you can share this with<br>
-                            students it will be help for her<br>
-                        </p>
-                        <p class="card-text"><small class="text-muted">Requested 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- END OF PHP -->
     </div>
+
     <script>
         "use strict";
         const element = document.getElementById('need-login');
@@ -174,6 +168,15 @@ EOF;
         element.addEventListener('click', () => {
             alert('You must login before posting a search request');
         })
+
+        const element_resolve = document.querySelectorAll('#need-login-resolve');
+        element_resolve.forEach(element => {
+            element.addEventListener('click', () => {
+                alert('Please just sign in to resolve blood search requests!');
+            })
+
+        });
+        console.log(element)
     </script>
 
 

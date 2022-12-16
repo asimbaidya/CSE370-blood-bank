@@ -31,7 +31,7 @@ require_once('./db/config.php');
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1 fs-1" href="/project">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
