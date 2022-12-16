@@ -5,6 +5,7 @@ echo '<pre>';
 print_r($_GET);
 echo '</pre>';
 
+
 if (isset($_GET['sid']) && isset($_GET['uid'])) {
     $sid = $_GET['sid'];
     $uid = $_GET['uid'];

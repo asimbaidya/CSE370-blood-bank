@@ -66,6 +66,40 @@ require_once('./db/config.php');
         </div>
     </nav>
 
+    <div class="container mt-4">
+        <h3 class="mt-4">Donate Blood</h3>
+        <p mb-1>
+            Across Bangladesh, every day there remains an urgent need for all types of blood groups. Especially donors with rare blood groups such as O Negative, B Negative and A Negative are in high demand. Your timely response is essential to the supply of healthy blood for the massive daily demand we face.
+        </p>
+        <p mb-1>
+            Your donation can save the lives of many, make a difference or simply make you feel great about your contribution to humanity. Whatever your reason, whatever your motivation we welcome you to learn more about eligibility and benefits of donating blood with a trusted organization like us.
+        </p>
+        <p mb-1>
+            Find out more about local blood drives and BDRCS campaigns near you. Donate blood, save lives.
+        </p>
+        <p mb-1>
+            Hotline: <strong>0181145852</strong>4 (9.00 AM to 5.00 PM)
+        </p>
+        <!--  -->
+        <h3 class="mt-4">Make an appoinment to donate blood on our bloodbank</h3>
+        <form class="mt-4" action="" method="POST">
+            <!--  -->
+            <div class="mb-3">
+                <label for="" class="">Blood Group</label>
+                <input type="email" class="form-control" id="">
+            </div>
+            <!--  -->
+            <div class="mb-3">
+                <label for="" class="">Date</label>
+                <input type="date" class="form-control" id="">
+            </div>
+            <!--  -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+    </div>
+
 </body>
 
 </html>

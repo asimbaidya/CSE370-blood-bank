@@ -15,7 +15,8 @@ require_once('./db/config.php');
     <!-- Javascript for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- custom css -->
-    <link rel="stylesheet" href="/project/static/styles/style.css" <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="/project/static/styles/style.css">
+    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
     <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
@@ -105,7 +106,7 @@ require_once('./db/config.php');
                 while ($row = mysqli_fetch_array($result)) {
                     $sid = $row['id'];
                     $content = $row['content'];
-                    $blood_group = $row['blood_group'];
+                    $blood_group = bin2hex($row['blood_group']);
                     $search_status = $row['search_status'];
                     $request_time = $row['request_time'];
                     $resolve_time = $row['resolve_time'];
@@ -115,28 +116,31 @@ require_once('./db/config.php');
                     $date = strtotime($request_time);
                     $f_req_time = date('H:i A, l d , F, Y', $date);
 
+                    // logged user info
+                    $useremail = $_SESSION['useremail'];
+
                     // <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div>
-                    echo '<div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
+                    echo <<<EOF
+                    <div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="/project/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h3 class="card-title">
-                                        Emmergency
-                                        <span class="badge bg-danger">' . $blood_group . '</span>
-                                         required! by ' . $request_by . '
-                                        </h3>
-                                        <p class="card-text">
-                                        ' . $content . '
-                                        </p>
-                                        <p class="card-text"><small class="text-muted">Requested at ' . $f_req_time . '</small></p>
-                                        <button type="button" class="btn btn-primary">Contact for Donate</button>
+                                        <h3 class="card-title"> Emmergency <span class="badge bg-danger"> $blood_group </span> required! by $request_by </h3>
+                                        <p class="card-text"> $content </p>
+                                        <p class="card-text"><small class="text-muted">Requested at  $f_req_time </small></p>
+                                        <a class="primary"
+                                        href="/project/controller/handle-resolve.php?search-id=$sid&sblood-group=$blood_group&request-id=$request_by&resolver-id=$useremail"
+                                        >
+                                        <span class="badge bg-primary">Contact for Donate</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+EOF;
                 }
             }
         }
