@@ -67,20 +67,21 @@ require_once('./db/config.php');
     <!-- Abouts  -->
 
     <div class="container">
-        <div class="container">
-            <details class="faq">
+        <!-- <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div> -->
+        <div class="mt-4">
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
                 <summary class="faq-question">WTF is the purpose of this site!!</summary>
                 <span class="faq-ans">
                     To pass a shittty course
                 </span>
             </details>
-            <details class="faq">
+            <details class="faq shadow-lg p-1 ps-4 mb-2 bg-body rounded">
                 <summary class="faq-question">ER url!</summary>
                 <span class="faq-ans">
                     <a href="/">TODO</a>
                 </span>
             </details>
-            <details class="faq">
+            <details class="faq shadow-g p-1 ps-4 mb-5 bg-body rounded">
                 <summary class="faq-question">Schema url!</summary>
                 <span class="faq-ans">
                     <a href="/">TODO</a>

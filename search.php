@@ -78,7 +78,6 @@ require_once('./db/config.php');
         $sql = "SELECT * FROM search;";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
-                echo "<hr>\n<h1>Searches</h1>";
                 while ($row = mysqli_fetch_array($result)) {
                     $sid = $row['id'];
                     $content = $row['content'];
@@ -88,7 +87,9 @@ require_once('./db/config.php');
                     $resolve_time = $row['resolve_time'];
                     $request_by = $row['request_by'];
                     $resolved_by = $row['resolved_by'];
-                    echo '<div class="card m-1">
+
+                    // <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div>
+                    echo '<div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="/project/asset/banner-login.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
