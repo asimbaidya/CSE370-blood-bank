@@ -50,10 +50,12 @@ require_once('./db/config.php');
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
-                    if ($_SESSION['user_logged']) {
+                    if ($_SESSION['user_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/user.php">Profile</a></li>';
-                    } elseif ($_SESSION['admin_logged']) {
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                    } elseif ($_SESSION['admin_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
                     } else {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
                     }

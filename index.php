@@ -50,10 +50,12 @@ require_once('./db/config.php');
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
-                    if ($_SESSION['user_logged']) {
+                    if ($_SESSION['user_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/user.php">Profile</a></li>';
-                    } elseif ($_SESSION['admin_logged']) {
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
+                    } elseif ($_SESSION['admin_loggedin']) {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active" href="/project/logout.php">Logout</a></li>';
                     } else {
                         echo '<li class="nav-item"><a class="nav-link active" href="/project/login.php">Login</a></li>';
                     }
@@ -66,6 +68,13 @@ require_once('./db/config.php');
 
     <!----------------------------- slides ------------------------------  -->
     <div class="container mt-2">
+        <?php
+        //   testing
+        echo "<hr>\n<h1>get</h1>";
+        echo '<pre>';
+        print_r($_SESSION);
+        echo "</pre>\n<hr>";
+        ?>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

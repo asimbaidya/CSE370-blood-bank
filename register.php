@@ -177,6 +177,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                         </div>
 
                                     </form>
+                                    <!--  -->
+                                    <div class="d-flex flex-row align-items-center m-2 mt-4">
+                                        <i class="fas fa-hand fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            Already registered?
+                                            <a href="/project/login.php" class="link-primary">Log In</a>
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">

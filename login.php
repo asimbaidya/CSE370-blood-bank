@@ -1,12 +1,14 @@
 <?php
+// initialize the session
 session_start();
-require_once('./db/config.php');
 
-// back to hoem if user already logged in
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    header('location: /project');
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: /project");
+    exit;
 }
 ?>
+
 
 <!-- below HTML -->
 <html lang="en">
@@ -81,7 +83,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <img src="/project/asset/banner-login.jpg" class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
+                    <!-- <form action="" method="post"> -->
                     <form action="/project/controller/handle-login.php" method="post">
+                        <!--  -->
+
+                        <?php
+                        if (isset($_SESSION['login_err']) && !empty($_SESSION['login_err'])) {
+                            echo '<div class="alert alert-danger">' . $_SESSION['login_err'] . '</div>';
+                            unset($_SESSION['login_err']);
+                        } else {
+                        }
+                        ?>
                         <!--  -->
                         <div class="d-flex flex-row align-items-center mb-2">
                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -105,15 +118,32 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                 <input class="form-check-input" type="checkbox" name="admin" value="True" />
                                 <label class="form-check-label" for="admin"> Login Admin </label>
                             </div>
-                            <a href="#!">Forgot password?</a>
+                            <a id='forgot_password' href="#!">Forgot password?</a>
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+                        </div>
                     </form>
+                    <!--  -->
+                    <div class="d-flex flex-row align-items-center m-2 mt-4">
+                        <i class="fas fa-hand fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            Does not have a account ?
+                            <a href="/project/register.php" class="link-primary">Jon Today</a>
+                        </div>
+                    </div>
                 </div>
             </div>
     </section>
+    <script>
+        "use strict";
+        const forgot_password = document.getElementById('forgot_password');
+        forgot_password.addEventListener('click', () => {
+            alert('This feature not implemented for this project(yet) :(');
+        })
+    </script>
 </body>
 
 </html>
