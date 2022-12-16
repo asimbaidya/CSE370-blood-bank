@@ -1,3 +1,9 @@
+<?php
+
+// without this,$_SESSION is undefined
+session_start();
+?>
+
 <!-- below HTML -->
 <html lang="en">
 
