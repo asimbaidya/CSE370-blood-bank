@@ -70,7 +70,7 @@ require_once('./db/config.php');
     <div class="container mt-2">
         <?php
         //   testing
-        echo "<hr>\n<h1>get</h1>";
+        echo "<hr>\n<h1>SESSION</h1>";
         echo '<pre>';
         print_r($_SESSION);
         echo "</pre>\n<hr>";

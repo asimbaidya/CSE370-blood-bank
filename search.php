@@ -92,7 +92,7 @@ require_once('./db/config.php');
                     echo '<div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="/project/asset/banner-login.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
+                                    <img src="/project/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -118,7 +118,7 @@ require_once('./db/config.php');
         <div class="card m-1">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="/project/asset/banner-login.jpg" class="img-fluid rounded-start" alt="DeadPool" style="max-height: 300px;">
+                    <img src="/project/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

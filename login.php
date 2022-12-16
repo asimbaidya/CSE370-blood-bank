@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
     header("location: /project");
     exit;
 }
@@ -82,7 +82,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         <div class="container py-5 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6">
-                    <img src="/project/asset/banner-login.jpg" class="img-fluid" alt="Phone image">
+                    <img src="/project/asset/banner-login.png" class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
