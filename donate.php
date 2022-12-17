@@ -15,6 +15,9 @@ require_once('./db/config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonmous">
     <!-- Javascript for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- Font Awosome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- custom css -->
     <link rel="stylesheet" href="/project/static/styles/style.css">
     <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
@@ -67,38 +70,77 @@ require_once('./db/config.php');
     </nav>
 
     <div class="container mt-4">
-        <h3 class="mt-4">Donate Blood</h3>
-        <p mb-1>
+
+        <h1 class="display-3">Donate Blood</h1>
+
+        <p class="lead mb-1">
             Across Bangladesh, every day there remains an urgent need for all types of blood groups. Especially donors with rare blood groups such as O Negative, B Negative and A Negative are in high demand. Your timely response is essential to the supply of healthy blood for the massive daily demand we face.
-        </p>
-        <p mb-1>
+        <p class="lead mb-2">
             Your donation can save the lives of many, make a difference or simply make you feel great about your contribution to humanity. Whatever your reason, whatever your motivation we welcome you to learn more about eligibility and benefits of donating blood with a trusted organization like us.
         </p>
-        <p mb-1>
+        <p class="lead mb-2">
             Find out more about local blood drives and BDRCS campaigns near you. Donate blood, save lives.
         </p>
-        <p mb-1>
+        <p class="lead mb-2">
             Hotline: <strong>0181145852</strong>4 (9.00 AM to 5.00 PM)
         </p>
+
         <!--  -->
-        <h3 class="mt-4">Make an appoinment to donate blood on our bloodbank</h3>
-        <form class="mt-4" action="" method="POST">
-            <!--  -->
-            <div class="mb-3">
-                <label for="" class="">Blood Group</label>
-                <input type="email" name="abc" class="form-control" id="">
+        <p class="h1 text-center mt-4">Make an appoinment to donate blood on our bloodbank</p>
+
+        <?php
+        // if (isset($_SESSION['register_err']) && !empty($_SESSION['register_err'])) {
+        //     echo '<div class="alert alert-danger">' . $_SESSION['register_err'] . '</div>';
+        //     unset($_SESSION['register_err']);
+        // } else {
+        // }
+        ?>
+
+        <div class="d-flex justify-content-center m-4">
+            <h1><span class="badge bg-secondary">Pick a Date</span></h1>
+        </div>
+
+        <?php
+        $useremail = "";
+        if (isset($_SESSION['$useremail']) & !empty($_SESSION['useremail'])) {
+            $useremail = $_SESSION['useremail'];
+        }
+        ?>
+        <form action="/project/controller/handle-donate.php?useremail=<?php echo ($_SESSION['useremail']) ?>" method="POST" class="mx-1 mx-md-4">
+
+            <div class="d-flex flex-row align-items-center mb-2">
+                <i class="fas fa-calendar-days fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <!-- <input type="date" name="date-picked" class="form-control" value="1999-06-09" /> -->
+                    <input type="date" name="date-picked" class="form-control" />
+                </div>
             </div>
-            <!--  -->
-            <div class="mb-3">
-                <label for="" class="">Date</label>
-                <input type="date" class="form-control" id="">
+
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+
+                <?php
+                if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
+                    echo '<button type="submit" class="btn btn-primary btn-lg">Click For Donate</button>';
+                } else {
+                    echo '<button id="need-login" type="button" class="btn btn-outline-secondary btn-lg">Click For Donate</button>';
+                }
+                ?>
             </div>
-            <!--  -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+
         </form>
-
-
+        <!-- image -->
+        <img src="/project/asset/banner-register.jpg" class="rounded mx-auto d-block" alt="...">
     </div>
+    <script>
+        "use strict";
+        const element = document.getElementById('need-login');
+        console.log(element)
+        element.addEventListener('click', () => {
+            alert('You must login in order to donate blood');
+        })
+    </script>
+
 
 </body>
 

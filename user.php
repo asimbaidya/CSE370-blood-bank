@@ -1,7 +1,35 @@
 <?php
 // initialize the session
 session_start();
-include_once('../db/config.php');
+
+// _db_
+// include_once('../db/config.php');
+
+
+// exit if user not logged in, as only visit profile when logged
+if (!isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] !== true) {
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project');
+    }
+    exit;
+}
+
+// exit if admin logged in
+// admin can not visit users profile, as it is generic
+if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
+    // redirect to previous page
+    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+        $BACK = $_SERVER['HTTP_REFERER'];
+        header("location: $BACK");
+    } else {
+        header('location: /project/');
+    }
+    exit;
+}
 
 ?>
 
