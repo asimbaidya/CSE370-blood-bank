@@ -119,7 +119,6 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                         if (isset($_SESSION['login_err']) && !empty($_SESSION['login_err'])) {
                             echo '<div class="alert alert-danger">' . $_SESSION['login_err'] . '</div>';
                             unset($_SESSION['login_err']);
-                        } else {
                         }
                         ?>
                         <!--  -->

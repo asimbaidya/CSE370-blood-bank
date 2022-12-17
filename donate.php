@@ -87,13 +87,11 @@ require_once('./db/config.php');
 
         <!--  -->
         <p class="h1 text-center mt-4">Make an appoinment to donate blood on our bloodbank</p>
-
         <?php
-        // if (isset($_SESSION['register_err']) && !empty($_SESSION['register_err'])) {
-        //     echo '<div class="alert alert-danger">' . $_SESSION['register_err'] . '</div>';
-        //     unset($_SESSION['register_err']);
-        // } else {
-        // }
+        if (isset($_SESSION['donate_err']) && !empty($_SESSION['donate_err'])) {
+            echo '<div class="alert alert-danger">' . $_SESSION['donate_err'] . '</div>';
+            unset($_SESSION['donate_err']);
+        }
         ?>
 
         <div class="d-flex justify-content-center m-4">
@@ -102,32 +100,27 @@ require_once('./db/config.php');
 
         <?php
         $useremail = "";
+        // make change after reading the code
         if (isset($_SESSION['$useremail']) & !empty($_SESSION['useremail'])) {
             $useremail = $_SESSION['useremail'];
         }
         ?>
         <form action="/project/controller/handle-donate.php?useremail=<?php echo ($_SESSION['useremail']) ?>" method="POST" class="mx-1 mx-md-4">
-
             <div class="d-flex flex-row align-items-center mb-2">
                 <i class="fas fa-calendar-days fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
-                    <!-- <input type="date" name="date-picked" class="form-control" value="1999-06-09" /> -->
-                    <input type="date" name="date-picked" class="form-control" />
+                    <input type="date" name="date-picked" class="form-control" value="2022-12-18" />
                 </div>
             </div>
-
-
             <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-
                 <?php
                 if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                    echo '<button type="submit" class="btn btn-primary btn-lg">Click For Donate</button>';
+                    echo '<button type="submit" name="submit" class="btn btn-primary btn-lg">Click For Donate</button>';
                 } else {
                     echo '<button id="need-login" type="button" class="btn btn-outline-secondary btn-lg">Click For Donate</button>';
                 }
                 ?>
             </div>
-
         </form>
         <!-- image -->
         <img src="/project/asset/banner-register.jpg" class="rounded mx-auto d-block" alt="...">
