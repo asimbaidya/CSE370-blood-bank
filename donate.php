@@ -98,14 +98,7 @@ require_once('./db/config.php');
             <h1><span class="badge bg-secondary">Pick a Date</span></h1>
         </div>
 
-        <?php
-        $useremail = "";
-        // make change after reading the code
-        if (isset($_SESSION['$useremail']) & !empty($_SESSION['useremail'])) {
-            $useremail = $_SESSION['useremail'];
-        }
-        ?>
-        <form action="/project/controller/handle-donate.php?useremail=<?php echo ($_SESSION['useremail']) ?>" method="POST" class="mx-1 mx-md-4">
+        <form action="/project/controller/handle-donate.php?useremail=<?php echo $_SESSION['useremail'] ?>" method="POST" class="mx-1 mx-md-4">
             <div class="d-flex flex-row align-items-center mb-2">
                 <i class="fas fa-calendar-days fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">

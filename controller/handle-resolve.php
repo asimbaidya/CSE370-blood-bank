@@ -20,8 +20,6 @@ print_r($_GET);
 // )
 echo '</pre>';
 
-// $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_array($result);
 
 
 if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['search-id']) && !empty($_GET['search-id'])) {

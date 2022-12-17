@@ -33,7 +33,7 @@ if (isset($_POST['submit']) and isset($_GET['useremail'])) {
                 // donated, so update last donate on users table
                 $sql = "UPDATE `user` SET `last_donated` = '$date_picked' WHERE id = $id;";
                 // all-done: back home
-                // header('location: /project'); // uc
+                header('location: /project'); // uc
                 if (mysqli_query($conn, $sql)) {
                     // hanlde the erro
                 }

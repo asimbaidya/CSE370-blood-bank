@@ -69,8 +69,19 @@ require_once('./db/config.php');
 
     <!------------------------------adding new post for adding post-------------  -->
     <div class="container mt-2">
-        <form>
-            <div class="form-outline flex-fill m-2">
+        <?php
+        if (isset($_SESSION['post_msg']) && !empty($_SESSION['post_msg'])) {
+            $msg = $_SESSION['post_msg'];
+            echo <<<ALERT
+                <div class="alert alert-success" role="alert">
+                $msg
+                </div>
+            ALERT;
+            unset($_SESSION['post_msg']);
+        }
+        ?>
+        <form action="/project/controller/handle-post.php?useremail=<?php echo $_SESSION['useremail'] ?>" method="POST" class="mx-1 mx-md-4">
+            <div class="form-outline flex-fill mt-2 mb-1">
                 <label for="blood_group">Required Blood Group</label>
                 <select class="form-select" name='blood-group' aria-label="Default select example" required>
                     <option value="A+">A positive </option>
@@ -83,14 +94,14 @@ require_once('./db/config.php');
                     <option value="AB-">AB negative</option>
                 </select>
             </div>
-            <div class="form-outline flex-fill m-2">
+            <div class="form-outline flex-fill mt-1 mb-1">
                 <label for="">Search Details</label>
-                <textarea class="form-control" name="post-content" rows="2" placeholder="Write Your Post here ... "></textarea>
+                <textarea class="form-control" name="post-content" rows="3" placeholder="Write Your Post here ... "></textarea>
             </div>
-            <div class="d-grid gap-2 flex-fill m-2">
+            <div class="d-grid gap-2 flex-fill mt-4 mb-4">
                 <?php
                 if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                    echo '<button type="submit" class="btn btn-primary">Post</button>';
+                    echo '<button type="submit" name="submit" class="btn btn-primary">Post</button>';
                 } else {
                     echo '<button type="button" id="need-login" class="btn btn-outline-secondary">Post</button>';
                 }
@@ -100,7 +111,7 @@ require_once('./db/config.php');
 
         <!------------------------------Display from db--------------------  -->
         <?php
-        $sql = "SELECT * FROM search ORDER BY request_time DESC;";
+        $sql = "SELECT * FROM search ORDER BY id DESC;";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
@@ -144,8 +155,8 @@ require_once('./db/config.php');
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                         <h3 class="card-title"> Emmergency <span class="badge bg-danger"> $bg </span> required! by $request_by </h3>
-                                        <p class="card-text"> $content </p>
+                                        <p class="h2"> Emmergency <span class="badge bg-danger"> $bg </span> required! by $request_by</p>
+                                        <p class="lead mt-2 mb-4"> $content </p>
                                         <p class="card-text"><small class="text-muted">Requested at  $f_req_time </small></p>
                                         $solve_button
                                     </div>
