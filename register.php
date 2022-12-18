@@ -179,7 +179,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="tel" name="phone" class="form-control" placeholder="017{Your phone}" pattern="[0-9]{11}" placeholder="Your Phone" required />
+                                                <input type="tel" name="phone" class="form-control" placeholder="01{Your phone number}" pattern="[0-9]{11}" placeholder="Your Phone" required />
                                                 <label class="form-label" for="phone">Phone</label>
                                             </div>
                                         </div>
@@ -195,7 +195,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="confirm-password" id="c_pass" class="form-control" placeholder="must your password" required />
+                                                <input type="password" name="confirm-password" id="c_pass" class="form-control" placeholder="must match your password" required />
                                                 <label class="form-label" for="confirm-password">Confirm Password</label>
                                             </div>
                                         </div>

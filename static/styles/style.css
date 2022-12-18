@@ -15,7 +15,7 @@
   margin: 0.2em;
   padding: 1em;
   color: #d20f39;
-  background-color: #f5e0dc		;
+  background-color: #f5e0dc;
   border: solid #e64553 1px;
   /* border: solid #a6d189	 1px; */
 }
@@ -25,20 +25,25 @@
 .faq-ans {
   font-size: 1.2em;
   padding-left: 2em;
+  color: #1e66f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+  height: 4em;
 }
 
 input:focus::placeholder {
   color: transparent;
 }
 
-
 .gradient-custom-2 {
-/* fallback for old browsers */
-background: #fbc2eb;
+  /* fallback for old browsers */
+  background: #fbc2eb;
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
 }
+
