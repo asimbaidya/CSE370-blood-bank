@@ -123,7 +123,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                         <div class="d-flex flex-row align-items-center mb-2">
                             <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="password" name="password" id="pass" class="form-control" />
+                                <input type="password" name="password" id="pass" class="form-control" placeholder="*************" />
                                 <label class="form-label" for="form3Example4c">User Password</label>
                             </div>
                         </div>
