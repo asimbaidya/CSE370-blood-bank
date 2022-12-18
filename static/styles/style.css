@@ -3,12 +3,10 @@
 }
 
 .slide_reference:hover {
-  opacity: 1;
+  opacity: 0.5;
 }
 .slide_reference a {
-  background-color: #f2d5cf;
   color: #dc8a78;
-  border-radius: 50px;
 }
 
 .faq {
@@ -29,7 +27,7 @@
   padding: 10px;
   margin-bottom: 10px;
   display: block;
-  height: 4em;
+  min-height: 4em;
 }
 
 input:focus::placeholder {
@@ -46,4 +44,3 @@ input:focus::placeholder {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
 }
-
