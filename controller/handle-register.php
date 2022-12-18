@@ -9,25 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
-    // redirect to previous page
-    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-        $BACK = $_SERVER['HTTP_REFERER'];
-        header("location: $BACK");
-    } else {
-        header('location: /project');
-    }
+    header('location: /project');
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
-    // redirect to previous page
-    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-        $BACK = $_SERVER['HTTP_REFERER'];
-        header("location: $BACK");
-    } else {
-        header('location: /project/');
-    }
+    header('location: /project/');
     exit;
 }
 
@@ -87,9 +75,10 @@ SQL;
         if (mysqli_query($conn, $sql)) {
             $_SESSION["user_loggedin"] = true;
             $_SESSION["useremail"] = $useremail;
-            echo "New record created successfully";
-            echo '<a href="/project">Goto Home</a>';
-            // header('location:  /project');
+            $_SESSION['msg'] = "A new account created with $useremail email";
+            // echo "New record created successfully";
+            // echo '<a href="/project">Goto Home</a>';
+            header('location:  /project');
         } else {
             // if someting explodes, run this line
             $_SESSION['register_err'] = "$sql contain error" . mysqli_error($conn);

@@ -65,24 +65,122 @@ require_once('./db/config.php');
             </div>
         </div>
     </nav>
-    <!--  -->
-    <!--  -->
-    <h1>Add Hospitall Contact</h1>
-    <form class="mt-4" action="" method="POST">
-        <!--  -->
-        <div class="mb-3">
-            <label for="" class="">Blood Group</label>
-            <input type="email" class="form-control" id="">
+
+    <?php
+    // query & variable unpack
+    $name = $_SESSION['useremail'];
+    $address = "/some/address";
+    ?>
+    <div class="container pt-4">
+        <h1 class="display-6"> Visit
+            <a href="http://localhost/phpmyadmin">DBMS</a> for Managing this db
+        </h1>
+    </div>
+    <section class="h-100 gradient-custom-2">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-9 col-xl-7">
+                    <div class="card">
+                        <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                            <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                <img src="/project/asset/user-avater-male.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                            </div>
+                            <div class="ms-3" style="margin-top: 130px;">
+                                <h5>email: <?php echo $name ?></h5>
+                                <span><?php echo "admin-address" ?></span>
+                            </div>
+                        </div>
+                        <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                            <div class="d-flex justify-content-end text-center ">
+                                <div>
+                                    <p class="mb-1 h5">253</p>
+                                    <p class="small text-muted mb-0">admin Photos</p>
+                                </div>
+                                <div class="px-3">
+                                    <p class="mb-1 h5">1026</p>
+                                    <p class="small text-muted mb-0">Followers</p>
+                                </div>
+                                <div>
+                                    <p class="mb-1 h5">478</p>
+                                    <p class="small text-muted mb-0">Following</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 text-black">
+                            <div class="mb-5">
+                                <p class="lead fw-normal mb-1">About</p>
+                                <div class="p-4" style="background-color: #f8f9fa;">
+                                    <p class="font-italic mb-1">Web Developer</p>
+                                    <p class="font-italic mb-1">Lives in New York</p>
+                                    <p class="font-italic mb-0">Photographer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!--  -->
-        <div class="mb-3">
-            <label for="" class="">Date</label>
-            <input type="date" class="form-control" id="">
         </div>
-        <!--  -->
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="b-example-divider"></div>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                </a>
+                <p class="text-muted">&copy;2022</p>
+            </div>
+
+            <div class="col mb-3"></div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">About</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!--  -->
 
 </body>
+
 
 </html>

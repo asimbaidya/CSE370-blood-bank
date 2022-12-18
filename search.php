@@ -79,6 +79,15 @@ require_once('./db/config.php');
             ALERT;
             unset($_SESSION['post_msg']);
         }
+        if (isset($_SESSION['solve_err']) && !empty($_SESSION['solve_err'])) {
+            $msg = $_SESSION['solve_err'];
+            echo <<<ALERT
+                <div class="alert alert-warning" role="alert">
+                $msg
+                </div>
+            ALERT;
+            unset($_SESSION['solve_err']);
+        }
         ?>
         <form action="/project/controller/handle-post.php?useremail=<?php echo $_SESSION['useremail'] ?>" method="POST" class="mx-1 mx-md-4">
             <div class="form-outline flex-fill mt-2 mb-1">
@@ -111,7 +120,7 @@ require_once('./db/config.php');
 
         <!------------------------------Display from db--------------------  -->
         <?php
-        $sql = "SELECT * FROM search ORDER BY id DESC;";
+        $sql = "SELECT * FROM search where search_status='0' ORDER BY id DESC;";
         if ($result = mysqli_query($conn, $sql)) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
@@ -122,11 +131,18 @@ require_once('./db/config.php');
                     $request_time = $row['request_time'];
                     $resolve_time = $row['resolve_time'];
                     $request_by = $row['request_by'];
-                    $resolved_by = $row['resolved_by'];
+                    $resolve_by = $row['resolve_by'];
                     //  formatted values
                     $date = strtotime($request_time);
                     $f_req_time = date('H:i A, l d , F, Y', $date);
                     $bg = $row['blood_group'];
+                    // get full name of user who poasted
+                    $sql = "SELECT first_name, last_name FROM user WHERE id = '$request_by';";
+                    $res = mysqli_query($conn, $sql);
+                    $name = mysqli_fetch_array($res);
+                    $fn = $name['first_name'];
+                    $ln = $name['last_name'];
+                    $request_by_name = $fn . " " . $ln;
 
                     // logged user info
                     $useremail = $_SESSION['useremail'];
@@ -155,7 +171,7 @@ require_once('./db/config.php');
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <p class="h2"> Emmergency <span class="badge bg-danger"> $bg </span> required! by $request_by</p>
+                                         <p class="h2"> Emmergency <span class="badge bg-danger"> $bg </span> required! by <span class="text-primary">$request_by_name</span></p>
                                         <p class="lead mt-2 mb-4"> $content </p>
                                         <p class="card-text"><small class="text-muted">Requested at  $f_req_time </small></p>
                                         $solve_button
@@ -177,13 +193,13 @@ EOF;
         const element = document.getElementById('need-login');
         console.log(element)
         element.addEventListener('click', () => {
-            alert('You must login before posting a search request');
+            alert('1.You must login before posting a search request\n2.use your user account');
         })
 
         const element_resolve = document.querySelectorAll('#need-login-resolve');
         element_resolve.forEach(element => {
             element.addEventListener('click', () => {
-                alert('Please just sign in to resolve blood search requests!');
+                alert('1.Please just sign in to resolve blood search requests!\n2.use your user account');
             })
 
         });
@@ -191,6 +207,62 @@ EOF;
     </script>
 
 
+    <!-- FOOTER -->
+    <div class="b-example-divider"></div>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                </a>
+                <p class="text-muted">&copy;2022</p>
+            </div>
+
+            <div class="col mb-3"></div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">About</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!--  -->
 </body>
 
 </html>

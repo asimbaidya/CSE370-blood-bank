@@ -72,26 +72,140 @@ require_once('./db/config.php');
         <!-- <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div> -->
         <div class="mt-4">
             <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
-                <summary class="faq-question">WTF is the purpose of this site!!</summary>
+                <summary class="faq-question">What is this site about ?</summary>
                 <span class="faq-ans">
-                    To pass a shittty course
+                    The purpose of this web site is to help people finde blood when they need!
                 </span>
             </details>
             <details class="faq shadow-lg p-1 ps-4 mb-2 bg-body rounded">
-                <summary class="faq-question">ER url!</summary>
+                <summary class="faq-question">chick to see er used for this db!</summary>
                 <span class="faq-ans">
-                    <a href="/">TODO</a>
+                    <div class="text-center">
+                        <img src="/project/asset/er.png" class="rounded" alt="Could not load ER image">
+                    </div>
                 </span>
             </details>
-            <details class="faq shadow-g p-1 ps-4 mb-5 bg-body rounded">
-                <summary class="faq-question">Schema url!</summary>
+            <details class="faq shadow-g p-1 ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">chick to see schema used for this db!</summary>
                 <span class="faq-ans">
-                    <a href="/">TODO</a>
+                    <div class="text-center">
+                        <img src="/project/asset/schema.png" class="rounded" alt="Could not load Schema image">
+                    </div>
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">What frotn library used to build this website?</summary>
+                <span class="faq-ans">
+                    We used vanijs HTML and CSS with little help of Bootstrap framework
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">In what langauge backend handled</summary>
+                <span class="faq-ans">
+                    For backend, we used php!
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Do we know php</summary>
+                <span class="faq-ans">
+                    No No No No No No No No No No No No No No No No No No No No No
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Did we used php?</summary>
+                <span class="faq-ans">
+                    Yes Yes Yes Yes Yes Yes Yes Yes Yes YesYes
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Do we know Python</summary>
+                <span class="faq-ans">
+                    Yes Yes Yes Yes Yes Yes Yes Yes Yes YesYes
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Did you used Python ?</summary>
+                <span class="faq-ans">
+                    No No No No No No No No No No No No No No No No No No No No No
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Do we have Blood</summary>
+                <span class="faq-ans">
+                    Yes Yes Yes Yes Yes Yes Yes Yes Yes YesYes
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Do we need Blood</summary>
+                <span class="faq-ans">
+                    Yes Yes Yes Yes Yes Yes Yes Yes Yes YesYes
+                </span>
+            </details>
+            <details class="faq shadow-lg p-1  ps-4 mb-2 bg-body rounded">
+                <summary class="faq-question">Do we share Blood</summary>
+                <span class="faq-ans">
+                    Yes Yes Yes Yes Yes Yes Yes Yes Yes YesYes
                 </span>
             </details>
         </div>
 
     </div>
+    <!-- FOOTER -->
+    <div class="b-example-divider"></div>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                </a>
+                <p class="text-muted">&copy;2022</p>
+            </div>
+
+            <div class="col mb-3"></div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Features</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">Home</a>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-muted">About</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!--  -->
 </body>
 
 </html>

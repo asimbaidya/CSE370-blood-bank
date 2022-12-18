@@ -67,14 +67,24 @@ require_once('./db/config.php');
     </nav>
 
     <!----------------------------- slides ------------------------------  -->
-    <div class="container mt-2">
+    <div class="container">
         <?php
-        //   testing
-        echo "<hr>\n<h1>SESSION</h1>";
-        echo '<pre>';
-        print_r($_SESSION);
-        echo "</pre>\n<hr>";
+
+        if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
+            $msg = $_SESSION['msg'];
+            echo <<<ALERT
+            <div class="alert alert-success mt-4" role="alert">
+                $msg
+            </div>
+            ALERT;
+            unset($_SESSION['msg']);
+        }
         ?>
+
+
+
+    </div>
+    <div class="container mt-2">
         <div id="carousel_slides" class="carousel carousel-fade carousel-dark slide " data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

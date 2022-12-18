@@ -38,26 +38,74 @@ if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['
     $user_bloog_group = $user_info['blood_group'];
 
     // getting blood_info
-    $sql = "SELECT blood_group,search_status FROM `search` WHERE id=$sid;";
+    $sql = "SELECT request_by, blood_group,search_status FROM `search` WHERE id=$sid;";
     $search_info_res = mysqli_query($conn, $sql);
     $search_info = mysqli_fetch_array($search_info_res);
 
     $search_blood_group = $search_info['blood_group'];
     $search_status = $search_info['search_status'];
+    $request_by = $search_info['request_by'];
 
-    if (1) {
-        $_SESSION['search_err'] = "";
+    if ($request_by === $user_id) {
+        $_SESSION['solve_err'] = <<<MSG
+            <p class="lead m-1">Please Please, Understand <span class="badge bg-danger">You can notate blood to yourself!</span></p>
+            MSG;
         header("location: /project/search.php");
         exit;
     }
-    if (1) {
-        $_SESSION['search_err'] = "";
+    if ($search_status === '1') {
+        $_SESSION['solve_err'] = <<<MSG
+            <p class="lead m-1">This request is alrady Solved!</p>
+            MSG;
         header("location: /project/search.php");
         exit;
     }
-    if (1) {
-        $_SESSION['search_err'] = "";
+    if ($user_bloog_group != $search_blood_group) {
+        $_SESSION['solve_err'] = <<<MSG
+            <p class="lead m-1">You clicked on Wrong Request! You can only donate<span class="badge bg-danger"> $user_bloog_group</span>
+            but, someone need <span class="badge bg-danger"> $search_blood_group</span> blood!</p>
+            MSG;
         header("location: /project/search.php");
         exit;
+    }
+
+    if (!empty($last_donated)) {
+        // same query used in handle-donate
+        $sql = "SELECT DATEDIFF( '$date_picked','$last_donated') AS days_count;";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        $days_count = $row['days_count'];
+        if ($days_count < 90) {
+            if ($days_count === 0) {
+                $days_count = "0";
+            }
+            $_SESSION['solve_err'] = <<<MSG
+            <p class="lead m-1">It's only been <span class="badge bg-warning">3 $days_count </span> days since you donated blood!, Now take some rest </p>
+            MSG;
+            header("location: /project/search.php");
+            exit;
+        }
+    }
+    // all goood! so resolve now
+    $resolve_time = date('d-m-y h:i:s');
+
+    // squery to run
+    $sql = "UPDATE `search` SET `search_status` = '1', `resolve_time` = '$resolve_time', `resolve_by` = '$user_id' WHERE id = $sid;";
+    if (mysqli_query($conn, $sql)) {
+        // now update last donated date of user
+        $last_donated = date('d-m-y');
+        // query
+        $sql = "UPDATE `user` SET `last_donated` = '$last_donated' WHERE id = $user_id;";
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['post_msg'] = <<<MSG
+            <p class="lead m-1">Thank you for resolving search request!</p>
+            MSG;
+            header('location: /project/search.php');
+        } else {
+            // handle error
+        }
+        // all-done: back home
+    } else {
+        // handle error
     }
 }

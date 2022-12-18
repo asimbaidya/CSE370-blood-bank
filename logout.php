@@ -10,14 +10,14 @@ if (isset($_SESSION)) {
     echo "NOT SET ?";
 }
 
+$useremail = $_SESSION['useremail'];
+$msg = "$useremail has logged out in successfully";
+
 $_SESSION = array();
 session_destroy();
 
-// redirect to previous page
-if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-    $BACK = $_SERVER['HTTP_REFERER'];
-    header("location: $BACK");
-} else {
-    header('location: /project/');
-}
+session_start();
+$_SESSION['msg'] = $msg;
+
+header('location: /project/');
 // DONE

@@ -10,24 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
     // redirect to previous page
-    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-        $BACK = $_SERVER['HTTP_REFERER'];
-        header("location: $BACK");
-    } else {
-        header('location: /project');
-    }
+    header('location: /project');
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
-    // redirect to previous page
-    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-        $BACK = $_SERVER['HTTP_REFERER'];
-        header("location: $BACK");
-    } else {
-        header('location: /project/');
-    }
+    header('location: /project/');
     exit;
 }
 
@@ -53,6 +42,7 @@ if (isset($_POST['admin'])) {
             if ($pass == $password) {
                 $_SESSION["admin_loggedin"] = true;
                 $_SESSION["useremail"] = $useremail;
+                $_SESSION['msg'] = "$useremail has logged in successfully as a Admin!";
                 // redirect to previous page
                 header('location: /project/');
             } else {
@@ -76,6 +66,7 @@ if (isset($_POST['admin'])) {
             if ($pass == $password) {
                 $_SESSION["user_loggedin"] = true;
                 $_SESSION["useremail"] = $useremail;
+                $_SESSION['msg'] = "$useremail has logged in successfully";
                 header('location: /project');
             } else {
                 $_SESSION['login_err'] = "Password Does not match!";
