@@ -191,19 +191,27 @@ EOF;
     <script>
         "use strict";
         const element = document.getElementById('need-login');
-        console.log(element)
-        element.addEventListener('click', () => {
-            alert('1.You must login before posting a search request\n2.use your user account');
-        })
 
-        const element_resolve = document.querySelectorAll('#need-login-resolve');
-        element_resolve.forEach(element => {
+        if (element) {
             element.addEventListener('click', () => {
-                alert('1.Please just sign in to resolve blood search requests!\n2.use your user account');
+                alert('1.You must login before posting a search request\n2.use your user account');
             })
 
-        });
-        console.log(element)
+        } else {
+            console.log("No element selected by ID: need-login");
+        }
+
+        const element_resolve = document.querySelectorAll('#need-login-resolve');
+        if (element_resolve) {
+            element_resolve.forEach(element => {
+                element.addEventListener('click', () => {
+                    alert('1.Please just sign in to resolve blood search requests!\n2.use your user account');
+                })
+
+            });
+        } else {
+            console.log("No element selected by #need-login-resolve");
+        }
     </script>
 
 
