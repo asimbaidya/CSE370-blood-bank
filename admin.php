@@ -16,8 +16,8 @@ require_once('./db/config.php');
     <!-- Javascript for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- custom css -->
-    <link rel="stylesheet" href="/project/static/styles/style.css">
-    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link href="/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -31,33 +31,33 @@ require_once('./db/config.php');
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1" href="/">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2" aria-current="page" href="/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2" href="/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2" href="/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/login.php">Login</a></li>';
                     }
                     // php code
                     ?>
@@ -83,7 +83,7 @@ require_once('./db/config.php');
                     <div class="card">
                         <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                                <img src="/project/asset/user-avater-male.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                                <img src="/asset/user-avater-male.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                             </div>
                             <div class="ms-3" style="margin-top: 130px;">
                                 <h5>email: <?php echo $name ?></h5>

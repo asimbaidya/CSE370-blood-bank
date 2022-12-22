@@ -50,14 +50,14 @@ if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['
         $_SESSION['solve_err'] = <<<MSG
             <p class="lead m-1">Please Please, Understand <span class="badge bg-danger">You can notate blood to yourself!</span></p>
             MSG;
-        header("location: /project/search.php");
+        header("location: /search.php");
         exit;
     }
     if ($search_status === '1') {
         $_SESSION['solve_err'] = <<<MSG
             <p class="lead m-1">This request is alrady Solved!</p>
             MSG;
-        header("location: /project/search.php");
+        header("location: /search.php");
         exit;
     }
     if ($user_bloog_group != $search_blood_group) {
@@ -65,7 +65,7 @@ if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['
             <p class="lead m-1">You clicked on Wrong Request! You can only donate<span class="badge bg-danger"> $user_bloog_group</span>
             but, someone need <span class="badge bg-danger"> $search_blood_group</span> blood!</p>
             MSG;
-        header("location: /project/search.php");
+        header("location: /search.php");
         exit;
     }
 
@@ -82,7 +82,7 @@ if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['
             $_SESSION['solve_err'] = <<<MSG
             <p class="lead m-1">It's only been <span class="badge bg-warning">3 $days_count </span> days since you donated blood!, Now take some rest </p>
             MSG;
-            header("location: /project/search.php");
+            header("location: /search.php");
             exit;
         }
     }
@@ -100,7 +100,7 @@ if (isset($_GET['resolver-id']) && !empty($_GET['resolver-id']) && isset($_GET['
             $_SESSION['post_msg'] = <<<MSG
             <p class="lead m-1">Thank you for resolving search request!</p>
             MSG;
-            header('location: /project/search.php');
+            header('location: /search.php');
         } else {
             // handle error
         }

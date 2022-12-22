@@ -19,5 +19,5 @@ session_destroy();
 session_start();
 $_SESSION['msg'] = $msg;
 
-header('location: /project/');
+header('location: /');
 // DONE

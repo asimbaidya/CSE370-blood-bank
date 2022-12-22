@@ -5,14 +5,14 @@ session_start();
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
     // redirect to previous page
-    header('location: /project');
+    header('location: /');
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
     // redirect to previous page
-    header('location: /project/');
+    header('location: /');
     exit;
 }
 
@@ -36,8 +36,8 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- custom css -->
-    <link rel="stylesheet" href="/project/static/styles/style.css">
-    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link href="/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -51,33 +51,33 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1" href="/">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2" aria-current="page" href="/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2" href="/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2" href="/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/register.php">Join Today </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/register.php">Join Today </a></li>';
                     }
                     // php code
                     ?>
@@ -97,12 +97,12 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
         <div class="container py-5 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6">
-                    <img src="/project/asset/banner-login.png" class="img-fluid" alt="Phone image">
+                    <img src="/asset/banner-login.png" class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
                     <!-- <form action="" method="post"> -->
-                    <form action="/project/controller/handle-login.php" method="post">
+                    <form action="/controller/handle-login.php" method="post">
                         <!--  -->
 
                         <?php
@@ -147,7 +147,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                         <i class="fas fa-hand fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                             Does not have a account ?
-                            <a href="/project/register.php" class="link-primary">Join Today</a>
+                            <a href="/register.php" class="link-primary">Join Today</a>
                         </div>
                     </div>
                 </div>

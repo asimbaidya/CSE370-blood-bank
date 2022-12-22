@@ -9,7 +9,7 @@ session_start();
 // exit if user not logged in, as only visit profile when logged
 if (!isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] !== true) {
     // redirect to previous page
-    header('location: /project');
+    header('location: /');
     exit;
 }
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] !== true) {
 // admin can not visit users profile, as it is generic
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
     // redirect to previous page
-    header('location: /project/');
+    header('location: /');
     exit;
 }
 
@@ -40,8 +40,8 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- custom css -->
-    <link rel="stylesheet" href="/project/static/styles/style.css">
-    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link href="/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -55,33 +55,33 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand fs-1 fs-1" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1 fs-1" href="/">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fs-2 fs-2" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2 fs-2" aria-current="page" href="/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2 fs-2" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2 fs-2" href="/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2 fs-2" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2 fs-2" href="/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2 fs-2" href="/login.php">Login</a></li>';
                     }
                     // php code
                     ?>
@@ -100,7 +100,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
     <section class="h-100 gradient-custom-2">
         <div class="container pt-4">
             <h1 class="display-6">Not a primary page visit
-                <a href="/project/search.php">Search</a> for donating/reqeusting
+                <a href="/search.php">Search</a> for donating/reqeusting
             </h1>
         </div>
         <div class="container h-100">
@@ -109,7 +109,7 @@ if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) 
                     <div class="card">
                         <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                                <img src="/project/asset/user-avater-male.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                                <img src="/asset/user-avater-male.png" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                             </div>
                             <div class="ms-3" style="margin-top: 130px;">
                                 <h5>email: <?php echo $name ?></h5>

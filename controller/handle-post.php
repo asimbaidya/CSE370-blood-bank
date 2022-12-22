@@ -27,7 +27,7 @@ if (isset($_POST['submit']) and isset($_GET['useremail'])) {
             $_SESSION['post_msg'] = <<<MSG
             <p class="lead m-1">Your Request for <span class="badge bg-danger"> $required_bg </span> Blood has been posted!! </p>
             MSG;
-            header('location: /project/search.php');
+            header('location: /search.php');
         } else {
             // handle insert error
         }

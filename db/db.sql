@@ -20,7 +20,7 @@ create table
     date_of_birth date NOT NULL,
     role char(50) DEFAULT 'desk_admin',
     phone varchar(15) NOT NULL,
-    image varchar(255) DEFAULT '/project/asset/admin-avater.png'
+    image varchar(255) DEFAULT '/asset/admin-avater.png'
   );
 
 create table
@@ -33,7 +33,7 @@ create table
     sex varchar(6) NOT NULL,
     date_of_birth date NOT NULL,
     blood_group varchar(3) NOT NULL,
-    image varchar(255) DEFAULT '/project/asset/user-avater-01.png',
+    image varchar(255) DEFAULT '/asset/user-avater-01.png',
     last_donated date DEFAULT null,
     last_received date DEFAULT null,
     phone varchar(15) NOT NULL,
@@ -63,7 +63,7 @@ create table
     name varchar(100) NOT NULL,
     address varchar(255) NOT NULL,
     phone varchar(15) NOT NULL,
-    image varchar(255) DEFAULT '/project/asset/default-hospital.png',
+    image varchar(255) DEFAULT '/asset/default-hospital.png',
     latitude float DEFAULT null,
     longitude float DEFAULT null
   );
@@ -71,7 +71,7 @@ create table
 create table
   blood_bank (
     name varchar(100) PRIMARY KEY,
-    image varchar(255) DEFAULT '/project/asset/bloodbank.png',
+    image varchar(255) DEFAULT '/asset/bloodbank.png',
     address varchar(255) NOT NULL,
     latitude float DEFAULT null,
     longitude float DEFAULT null

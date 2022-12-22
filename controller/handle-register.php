@@ -4,18 +4,18 @@ session_start();
 include_once('../db/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header('location: /project/register.php');
+    header('location: /register.php');
 }
 
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
-    header('location: /project');
+    header('location: /');
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
-    header('location: /project/');
+    header('location: /');
     exit;
 }
 
@@ -44,7 +44,7 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result)  == 1) {
         // alrady email exist in db
         $_SESSION['register_err'] = "$useremail already registered ";
-        header('location:  /project/register.php');
+        header('location:  /register.php');
     } else {
         // query for inserting into db 
         $sql = <<<SQL
@@ -77,18 +77,18 @@ SQL;
             $_SESSION["useremail"] = $useremail;
             $_SESSION['msg'] = "A new account created with $useremail email";
             // echo "New record created successfully";
-            // echo '<a href="/project">Goto Home</a>';
-            header('location:  /project');
+            // echo '<a href="/">Goto Home</a>';
+            header('location:  /');
         } else {
             // if someting explodes, run this line
             $_SESSION['register_err'] = "$sql contain error" . mysqli_error($conn);
-            header('location:  /project/register.php');
+            header('location:  /register.php');
         }
     }
     mysqli_close($conn);
 } else {
     $_SESSION['register_err'] = "$sql contain error" . mysqli_error($conn);
-    header('location:  /project/register.php');
+    header('location:  /register.php');
 }
 
 mysqli_close($conn);

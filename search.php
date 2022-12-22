@@ -15,9 +15,9 @@ require_once('./db/config.php');
     <!-- Javascript for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- custom css -->
-    <link rel="stylesheet" href="/project/static/styles/style.css">
-    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
-    <link href="/project/asset/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link href="/asset/favicon.png" rel="icon" type="image/png" />
+    <link href="/asset/favicon.png" rel="icon" type="image/png" />
     <style>
         .navbar {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -31,33 +31,33 @@ require_once('./db/config.php');
     <!----------------------------- nav -------------------------------  -->
     <nav class="navbar navbar-expand-lg" style="background-color:#d20f39">
         <div class="container">
-            <a class="navbar-brand fs-1" href="/project">BloodBank</a>
+            <a class="navbar-brand fs-1" href="/">BloodBank</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" aria-current="page" href="/project/donate.php">Donate</a>
+                        <a class="nav-link active fs-2" aria-current="page" href="/donate.php">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/search.php">Search</a>
+                        <a class="nav-link active fs-2" href="/search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-2" href="/project/about.php">About</a>
+                        <a class="nav-link active fs-2" href="/about.php">About</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
                     // php code
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/user.php">Profile</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/user.php">Profile</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } elseif (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin']) {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/admin.php">Admin </a></li>';
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/logout.php">Logout</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/admin.php">Admin </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/logout.php">Logout</a></li>';
                     } else {
-                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/project/login.php">Login</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link active fs-2" href="/login.php">Login</a></li>';
                     }
                     // php code
                     ?>
@@ -89,7 +89,7 @@ require_once('./db/config.php');
             unset($_SESSION['solve_err']);
         }
         ?>
-        <form action="/project/controller/handle-post.php?useremail=<?php echo $_SESSION['useremail'] ?>" method="POST" class="mx-1 mx-md-4">
+        <form action="/controller/handle-post.php?useremail=<?php echo $_SESSION['useremail'] ?>" method="POST" class="mx-1 mx-md-4">
             <div class="form-outline flex-fill mt-2 mb-1">
                 <label for="blood_group">Required Blood Group</label>
                 <select class="form-select" name='blood-group' aria-label="Default select example" required>
@@ -150,13 +150,13 @@ require_once('./db/config.php');
                     $solve_button = '';
                     if (isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']) {
                         $solve_button =  <<<bnt
-                        <button type="submit" class="btn btn-primary" onclick="window.location.href='/project/controller/handle-resolve.php?search-id=$sid&sblood-group=$blood_group&request-id=$request_by&resolver-id=$useremail';">
+                        <button type="submit" class="btn btn-primary" onclick="window.location.href='/controller/handle-resolve.php?search-id=$sid&sblood-group=$blood_group&request-id=$request_by&resolver-id=$useremail';">
                             Contact for Donate
                         </button>
                         bnt;
                     } else {
                         $solve_button =  <<<bnt
-                        <button type="button" class="btn btn-outline-secondary" id="need-login-resolve" onclick="window.location.href='/project/login.php';">
+                        <button type="button" class="btn btn-outline-secondary" id="need-login-resolve" onclick="window.location.href='/login.php';">
                             Login & Contact for Donate
                         </button>
                         bnt;
@@ -167,7 +167,7 @@ require_once('./db/config.php');
                     <div class="card m-1 shadow-lg p-3 mb-5 bg-body rounded">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="/project/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
+                                    <img src="/asset/banner-search.jpg" class="rounded img-fluid p-3" alt="DeadPool" style="max-height: 300px;">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

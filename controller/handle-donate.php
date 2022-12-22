@@ -23,7 +23,7 @@ if (isset($_POST['submit']) and isset($_GET['useremail'])) {
                 $days_count = $row['days_count'];
                 if ($days_count < 90) {
                     $_SESSION['donate_err'] = "It's only been $days_count days you donated blood!, Now take some rest ";
-                    header("location: /project/donate.php");
+                    header("location: /donate.php");
                     exit;
                 }
             }
@@ -33,7 +33,7 @@ if (isset($_POST['submit']) and isset($_GET['useremail'])) {
                 // donated, so update last donate on users table
                 $sql = "UPDATE `user` SET `last_donated` = '$date_picked' WHERE id = $id;";
                 // all-done: back home
-                header('location: /project'); // uc
+                header('location: /'); // uc
                 if (mysqli_query($conn, $sql)) {
                     // hanlde the erro
                 }

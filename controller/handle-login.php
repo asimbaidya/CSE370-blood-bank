@@ -4,19 +4,19 @@ session_start();
 include_once('../db/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header('location: /project/login.php');
+    header('location: /login.php');
 }
 
 // exit if user logged in
 if (isset($_SESSION["user_loggedin"]) && $_SESSION["user_loggedin"] === true) {
     // redirect to previous page
-    header('location: /project');
+    header('location: /');
     exit;
 }
 
 // exit if admin logged in
 if (isset($_SESSION["admin_loggedin"]) && $_SESSION["admin_loggedin"] === true) {
-    header('location: /project/');
+    header('location: /');
     exit;
 }
 
@@ -44,14 +44,14 @@ if (isset($_POST['admin'])) {
                 $_SESSION["useremail"] = $useremail;
                 $_SESSION['msg'] = "$useremail has logged in successfully as a Admin!";
                 // redirect to previous page
-                header('location: /project/');
+                header('location: /');
             } else {
                 $_SESSION['login_err'] = "️Admin Password Does NOT MATCH!";
-                header('location:  /project/login.php');
+                header('location:  /login.php');
             }
         } else {
             $_SESSION['login_err'] = "$useremail does not have admin privilege";
-            header('location:  /project/login.php');
+            header('location:  /login.php');
         }
     }
 } else {
@@ -67,14 +67,14 @@ if (isset($_POST['admin'])) {
                 $_SESSION["user_loggedin"] = true;
                 $_SESSION["useremail"] = $useremail;
                 $_SESSION['msg'] = "$useremail has logged in successfully";
-                header('location: /project');
+                header('location: /');
             } else {
                 $_SESSION['login_err'] = "Password Does not match!";
-                header('location:  /project/login.php');
+                header('location:  /login.php');
             }
         } else {
             $_SESSION['login_err'] = "$useremail does not have a account";
-            header('location:  /project/login.php');
+            header('location:  /login.php');
         }
     }
 }
