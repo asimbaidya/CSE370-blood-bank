@@ -175,10 +175,7 @@ session_start();
             </div>
         </footer>
     </div>
-
     <!--  -->
-
-
 </body>
 
 </html>
