@@ -19,7 +19,7 @@ php -S localhost:8000
 
 ## UI Overview
 
-⚠️ Slides taken from without permission ⚠[stanfordbloodcenter.org](https://stanfordbloodcenter.org/)
+⚠️ Slides taken from [stanfordbloodcenter.org](https://stanfordbloodcenter.org/) without permission ⚠
 
 ![1](./github-media/home-1.png)
 ![3](./github-media/route-donate.png)
