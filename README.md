@@ -24,6 +24,7 @@ php -S localhost:8000
 ![1](./github-media/home-1.png)
 ![3](./github-media/route-donate.png)
 ![4](./github-media/route-search.png)
+![5](./github-media/route-about.png)
 ![5](./github-media/route-sign-up.png)
 ![6](./github-media/route-login.png)
 ![7](./github-media/route-profile.png)
